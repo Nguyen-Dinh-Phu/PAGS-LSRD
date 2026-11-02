@@ -1,66 +1,41 @@
-# PAGS–LSRD: Topology Optimization of a Composite Robot Arm
+# PAGS–LSRD
 
-Research MATLAB source for **Paraxial Alignment Geometric Stability (PAGS)** combined with **Level Set–Reaction Diffusion (LS–RD)** topology optimization of an orthotropic composite robotic-arm link.
+**MATLAB implementation of multi-objective topology optimization for orthotropic composite robot-arm structures**, combining Level Set–Reaction Diffusion (LS–RD) with Paraxial Alignment Geometric Stability (PAGS).
 
 **Authors:** Le Thi Bich Nam, Dinh Phu Nguyen, Van Hanh Dang, TienDung Vu.
 
-**Research status:** Source release for reproducibility and review. The manuscript's numerical results have **not yet been independently reproduced** using this published repository. This README does not imply journal acceptance.
-
-## Repository structure
+## Project structure
 
 ```text
 PAGS-LSRD/
-├── MAIN.m                         # Entry point and study parameters
-├── FUNCTION/
-│   ├── Domain.m
-│   ├── ApplyBC.m
-│   ├── GetMeshInfo.m
-│   ├── InitializeSystem.m
-│   ├── AnalyzeFEM_PAGS_FixedTheta.m
-│   ├── Calculate_RC0.m
-│   ├── ElementToNodalSensitivity.m
-│   ├── PhiToDensity.m
-│   ├── ApplyPassivePhi.m
-│   ├── LVS.m
-│   ├── PAGS_LSRD.m
-│   ├── PAGS_Study.m
-│   └── PAGS_Output.m
+├── MAIN.m             # Main script and input parameters
+├── FUNCTION/           # FEM, PAGS, LS-RD and plotting functions
 ├── README.md
-├── REPLICATION_GUIDE.md
 └── .gitignore
 ```
 
-## Running in MATLAB
+## How to run
 
-1. Download or clone the repository, keeping the `FUNCTION/` folder intact.
-2. Set the MATLAB current folder to the repository root.
+1. Download or clone this repository.
+2. Open MATLAB and set the current folder to the repository root.
 3. Run:
 
 ```matlab
 MAIN
 ```
 
-`MAIN.m` adds the project root and `FUNCTION/` to the MATLAB path. Select `study.runMode = 'history'`, `'sweep'`, or `'all'` in `MAIN.m`.
+Set `study.runMode` in `MAIN.m` to `'history'`, `'sweep'` or `'all'`.
 
-### Default study
+## Default settings
 
-- Robot-arm domain: 120 × 30 (model coordinate units), background Q4 mesh: 360 × 90 elements.
-- Applied total load (case 3): `F = 5000` N, downward in the current implementation.
-- Orthotropic properties in `MAIN.m`: `E11 = 73.2e9` Pa, `E22 = 4.1e9` Pa, `G12 = 2.23e9` Pa, `nu12 = 0.33`.
-- Volume fraction limit: 0.60; 400 iterations per optimization case.
-- `history`: baseline `w = 0` and four `w = 0.4` cases at 0°, 30°, 45°, and 60°.
-- `sweep`: 24 cases combining `w = 0:0.1:0.5` and angles 0°, 30°, 45°, and 60°.
+- Q4 mesh: **360 × 90** elements; domain: **120 × 30 mm**
+- Load: **5,000 N** (downward, case 3)
+- Volume fraction: **0.60**; optimization iterations: **400**
+- Fiber orientations: **0°, 30°, 45°, 60°**
+- PAGS weights for sweep: **0, 0.1, 0.2, 0.3, 0.4, 0.5**
 
-## Figures and output
+The program displays MATLAB figures without writing result files; **Fig. 3 is omitted**. Numerical results remain in the workspace variable `studyResults`.
 
-The source displays MATLAB figures corresponding to **Fig. 4 onward** and the topology matrix. **Fig. 3 is not generated**, and no `Results/` directory or PNG/CSV/MAT exports are created. MATLAB responses remain in the `studyResults` workspace variable.
+## Note
 
-## Numerical verification and scientific limitations
-
-The provided source has not been executed or benchmarked here in MATLAB. Before citing its output as an independently reproduced result, verify the Q4 element local-node / global-DOF ordering, material and geometry conventions, supports and loads, sensitivities, and agreement with manuscript figures and tables. See [REPLICATION_GUIDE.md](REPLICATION_GUIDE.md).
-
-The current implementation uses a projected/normalized density-sensitivity reaction field rather than a literal exact gradient flow in the level-set variable; this distinction matters when interpreting the governing equations.
-
-## License and citation
-
-A software license has not been selected; publication of source code does **not** by itself grant permission for unrestricted copying or modification. Confirm licensing with the contributors before adding a license. Cite the finalized manuscript when bibliographic details become available.
+This repository contains research source code. Numerical validation against the manuscript has not yet been independently completed. No software license has been assigned.
