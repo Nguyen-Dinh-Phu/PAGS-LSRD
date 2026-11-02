@@ -34,8 +34,6 @@ Set `study.runMode` in `MAIN.m` to `'history'`, `'sweep'` or `'all'`.
 - Fiber orientations: **0°, 30°, 45°, 60°**
 - PAGS weights for sweep: **0, 0.1, 0.2, 0.3, 0.4, 0.5**
 
-The program displays MATLAB figures without writing result files; **Fig. 3 is omitted**. Numerical results remain in the workspace variable `studyResults`.
-
 ## Note
 
 This repository contains research source code. Numerical validation against the manuscript has not yet been independently completed. No software license has been assigned.
