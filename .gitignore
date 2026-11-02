@@ -13,8 +13,9 @@
 *.diary
 
 # Computational exports
-Published_Results/
+Results/
 results/
+Published_Results/
 output/
 
 # Temporary and operating-system files
