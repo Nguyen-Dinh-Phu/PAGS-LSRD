@@ -33,7 +33,3 @@ Set `study.runMode` in `MAIN.m` to `'history'`, `'sweep'` or `'all'`.
 - Volume fraction: **0.60**; optimization iterations: **400**
 - Fiber orientations: **0°, 30°, 45°, 60°**
 - PAGS weights for sweep: **0, 0.1, 0.2, 0.3, 0.4, 0.5**
-
-## Note
-
-This repository contains research source code. Numerical validation against the manuscript has not yet been independently completed. No software license has been assigned.
