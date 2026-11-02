@@ -6,6 +6,7 @@
 
 function [phi,str] = LVS(phi,TDN,vol,volInit,iterNum,nvol,Vmax, ...
                          betaVol,dVol,NN,dt,T,freedofsphi,nelx,nely)
+                         
 %--------- Prescribed volume continuation
 if iterNum <= nvol
 targetVol     = Vmax + (volInit-Vmax)*(1-iterNum/nvol);
